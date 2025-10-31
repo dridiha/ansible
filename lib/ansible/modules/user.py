@@ -3403,14 +3403,12 @@ def main():
         result['comment'] = info[4]
         result['home'] = info[5]
         result['shell'] = info[6]
-        result['append'] = user._check_usermod_append()
-
+        
         groups = set(user.current_groups)
         if (user.groups is not None):
             groups.update(user.groups.split(','))
         
         result['groups'] = ','.join(list(groups))
-        # result['groups'] = ','.join(sorted(user.user_group_membership(exclude_primary=False)))
 
         # handle missing homedirs
         info = user.user_info()
